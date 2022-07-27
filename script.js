@@ -1,7 +1,9 @@
 const container = document.querySelector("#container");
-
+let rows;
+let columns;
 
 function drawGrid(rows, columns) {
+
     let userGridInput = prompt("please enter grid size: ");
     rows = userGridInput;
     columns = userGridInput;
@@ -18,7 +20,6 @@ function drawGrid(rows, columns) {
         cell.style.minWidth = "0";
         cell.style.overflow = "hidden";
         cell.classList.add("grid");
-        cell.setAttribute("id", "gridItems");
         container.appendChild(cell);
 
         cell.addEventListener("mouseover", function() {
@@ -26,41 +27,19 @@ function drawGrid(rows, columns) {
         })
     }
 
-    // reset();
 }
 
-
-
-
-
-let rows = 0;
-let columns = 0;
 
 drawGrid(rows, columns);
 
 
-// function reset() {
-    const resetButton = document.querySelector("#resetButton");
-    resetButton.addEventListener("click", () => {
-        document.querySelectorAll(".mouseOver").forEach(e => e.classList.remove("mouseOver"));
-        // let userGridInput = prompt ("please enter a new grid size:");
-        // rows = userGridInput;
-        // columns = userGridInput;
-        // drawGrid(rows, columns);
-        drawGrid();
-    })
-// }
+ const resetButton = document.querySelector("#resetButton");
+ resetButton.addEventListener("click", () => {
+    document.querySelectorAll(".mouseOver").forEach(e => e.classList.remove("mouseOver"));
+    rows = 0;
+    columns = 0;
+    drawGrid();
+})
 
-// function reset() {
-//     grid.forEach(item => {
-//         item.style.backgroundColor = "white";
-//         drawGrid();
-//     });
-// }
 
-// const grid = document.querySelector("#gridItems")
-// const resetButton = document.querySelector("#resetButton");
 
-// resetButton.addEventListener("click", drawGrid);
-
-// document.querySelectorAll("mouseOver").forEach(e => e.remove());
