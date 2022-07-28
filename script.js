@@ -1,10 +1,13 @@
 const container = document.querySelector("#container");
 let rows;
 let columns;
+let slider = document.getElementById("myRange");
+let sliderValue = document.getElementById("sliderValue");
 
 function drawGrid(rows, columns) {
 
-    let userGridInput = prompt("please enter grid size: ");
+    let userGridInput = slider.value;
+    sliderValue.innerHTML = "Grid size: " + slider.value;
     rows = userGridInput;
     columns = userGridInput;
     container.style.setProperty("--grid-rows", rows);
@@ -22,24 +25,28 @@ function drawGrid(rows, columns) {
         cell.classList.add("grid");
         container.appendChild(cell);
 
+        let colorSelection = document.getElementById("selectColor")
         cell.addEventListener("mouseover", function() {
-            cell.classList.add("mouseOver");
+            // cell.classList.add("mouseOver");
+            cell.style.backgroundColor = colorSelection.value;
         })
     }
 
 }
 
+// const drawGridButton = document.querySelector("#drawGrid");
+// drawGridButton.addEventListener("click", () => drawGrid())
 
 drawGrid(rows, columns);
 
 
  const resetButton = document.querySelector("#resetButton");
  resetButton.addEventListener("click", () => {
-    document.querySelectorAll(".mouseOver").forEach(e => e.classList.remove("mouseOver"));
-    rows = 0;
-    columns = 0;
-    drawGrid();
+    let cellRemove = document.getElementById("container")
+    while (cellRemove.firstChild) {
+        cellRemove.removeChild(cellRemove.firstChild);
+    }
+    drawGrid()
 })
-
 
 
